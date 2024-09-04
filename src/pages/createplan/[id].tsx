@@ -208,8 +208,8 @@ export interface ExtendedGroup extends ClassBlockProps {
 }
 
 export const planFamily = atomFamily(
-  ({ id }: { id: number }) =>
-    atomWithStorage(
+  ({ id }: { id: number }) => {
+    const atom = atomWithStorage(
       `${id}-plan`,
       {
         id,
@@ -225,7 +225,12 @@ export const planFamily = atomFamily(
       },
       undefined,
       { getOnInit: true },
-    ),
+    );
+
+    atom.debugLabel = `plan - ${id}`;
+
+    return atom;
+  },
   (a, b) => a.id === b.id,
 );
 

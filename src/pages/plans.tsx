@@ -59,7 +59,7 @@ const Plans = () => {
         </div>
       </div>
 
-      <div className="container mx-auto max-h-full flex-1 flex-grow overflow-y-auto bg-gray-200 p-4">
+      <div className="container mx-auto max-h-full flex-1 flex-grow overflow-y-auto p-4">
         <div className="flex flex-wrap items-center justify-center gap-4 sm:justify-start">
           <button
             onClick={addNewPlan}

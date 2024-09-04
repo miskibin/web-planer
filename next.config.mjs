@@ -7,9 +7,13 @@ const nextConfig = {
       },
     ],
   },
+  transpilePackages: ["jotai-devtools"],
   reactStrictMode: true,
   typescript: {
     ignoreBuildErrors: true,
+  },
+  experimental: {
+    swcPlugins: [["@swc-jotai/debug-label", {}]],
   },
   eslint: {
     ignoreDuringBuilds: true,
