@@ -1,10 +1,9 @@
-import { NeatGradient } from "@firecms/neat";
 import { motion } from "framer-motion";
 // import { ChevronRightIcon } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import type React from "react";
-import { type ComponentProps, useEffect, useRef, useState } from "react";
+import { type ComponentProps, useState } from "react";
 import { twMerge } from "tailwind-merge";
 
 import { Seo } from "@/components/SEO";
@@ -178,8 +177,8 @@ const JoinUsBlock = () => (
     </div>
     <div className="z-50">
       {process.env.NODE_ENV === "development" ||
-        (typeof window !== "undefined" &&
-          window.location.hostname === "planer.solvro.pl") ? (
+      (typeof window !== "undefined" &&
+        window.location.hostname === "planer.solvro.pl") ? (
         <Link
           href="#"
           data-umami-event="Landing - Go to planning"
@@ -190,7 +189,7 @@ const JoinUsBlock = () => (
               "h-20 cursor-wait self-center border-4 text-xl opacity-80 transition-all duration-300 md:mt-0 md:p-7",
               // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
               false &&
-              "cursor-pointer hover:bg-white hover:shadow-[0_0_5px_rgb(200,200,255),0_0_10px_rgb(164,200,255)]",
+                "cursor-pointer hover:bg-white hover:shadow-[0_0_5px_rgb(200,200,255),0_0_10px_rgb(164,200,255)]",
             ),
           })}
         >
@@ -245,11 +244,19 @@ const Home = () => {
   return (
     <>
       <Seo />
-      <div className="absolute bg-black w-100 h-100 overflow-hidden text-center align-center" style={{ background: 'black', textAlign: "center", width: "100%", height: "100%" }} >
+      <div
+        className="w-100 h-100 align-center absolute overflow-hidden bg-black text-center"
+        style={{
+          background: "black",
+          textAlign: "center",
+          width: "100%",
+          height: "100%",
+        }}
+      >
         <Image
           src="/assets/background/background.jpg"
           alt="Kształt cząsteczki X"
-          style={{ alignSelf: 'center' }}
+          style={{ alignSelf: "center" }}
           width={950}
           height={950}
         />
@@ -258,7 +265,6 @@ const Home = () => {
       <div className="relative min-h-screen overflow-hidden">
         {/* Particles */}
         <div className="">
-
           <div className="particleX absolute right-10 top-32 animate-move-top duration-10000 md:right-80 md:top-36">
             <Image
               src="/assets/particle/particleX.png"
