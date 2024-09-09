@@ -178,8 +178,8 @@ const JoinUsBlock = () => (
     </div>
     <div className="z-50">
       {process.env.NODE_ENV === "development" ||
-      (typeof window !== "undefined" &&
-        window.location.hostname === "planer.solvro.pl") ? (
+        (typeof window !== "undefined" &&
+          window.location.hostname === "planer.solvro.pl") ? (
         <Link
           href="#"
           data-umami-event="Landing - Go to planning"
@@ -190,7 +190,7 @@ const JoinUsBlock = () => (
               "h-20 cursor-wait self-center border-4 text-xl opacity-80 transition-all duration-300 md:mt-0 md:p-7",
               // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
               false &&
-                "cursor-pointer hover:bg-white hover:shadow-[0_0_5px_rgb(200,200,255),0_0_10px_rgb(164,200,255)]",
+              "cursor-pointer hover:bg-white hover:shadow-[0_0_5px_rgb(200,200,255),0_0_10px_rgb(164,200,255)]",
             ),
           })}
         >
@@ -242,73 +242,23 @@ export const Footer = () => {
 };
 
 const Home = () => {
-  const canvasRef = useRef<HTMLCanvasElement | null>(null);
-  const gradientRef = useRef<NeatGradient | null>(null);
-  useEffect(() => {
-    if (!canvasRef.current) {
-      return;
-    }
-
-    gradientRef.current = new NeatGradient({
-      ref: canvasRef.current,
-
-      colors: [
-        {
-          color: "#000000",
-          enabled: true,
-        },
-        {
-          color: "#000000",
-          enabled: true,
-        },
-        {
-          color: "#80B3FF",
-          enabled: true,
-        },
-        {
-          color: "#274276",
-          enabled: true,
-        },
-        {
-          color: "#f5e1e5",
-          enabled: false,
-        },
-      ],
-      speed: 4,
-      horizontalPressure: 6,
-      verticalPressure: 7,
-      waveFrequencyX: 2,
-      waveFrequencyY: 2,
-      waveAmplitude: 2,
-      shadows: 7,
-      highlights: 5,
-      colorBrightness: 1,
-      colorSaturation: 0,
-      wireframe: false,
-      colorBlending: 10,
-      backgroundColor: "#000000",
-      backgroundAlpha: 0.95,
-      resolution: 1,
-    });
-  }, []);
-
   return (
     <>
       <Seo />
-      <canvas
-        style={{
-          isolation: "isolate",
-          position: "absolute",
-          zIndex: 0,
-          height: "100%",
-          width: "100%",
-        }}
-        ref={canvasRef}
-      />
+      <div className="absolute bg-black w-100 h-100 overflow-hidden text-center align-center" style={{ background: 'black', textAlign: "center", width: "100%", height: "100%" }} >
+        <Image
+          src="/assets/background/background.jpg"
+          alt="Kształt cząsteczki X"
+          style={{ alignSelf: 'center' }}
+          width={950}
+          height={950}
+        />
+      </div>
       {/* Main Page */}
       <div className="relative min-h-screen overflow-hidden">
         {/* Particles */}
         <div className="">
+
           <div className="particleX absolute right-10 top-32 animate-move-top duration-10000 md:right-80 md:top-36">
             <Image
               src="/assets/particle/particleX.png"
