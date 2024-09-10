@@ -34,6 +34,7 @@ import type {
   Registration,
 } from "@/lib/types";
 import { cn } from "@/lib/utils";
+import { useQuery } from "@tanstack/react-query";
 
 export interface ExtendedCourse extends Course {
   isChecked: boolean;
@@ -182,7 +183,7 @@ const CreatePlan = ({
   };
 
   const changePlanName = (newName: string) => {
-    void window.umami.track("Change plan name");
+    void window.umami?.track("Change plan name");
     setPlan({
       ...plan,
       name: newName,
@@ -190,7 +191,7 @@ const CreatePlan = ({
   };
 
   const checkCourse = (id: string) => {
-    void window.umami.track("Check course");
+    void window.umami?.track("Check course");
     setPlan({
       ...plan,
       courses: plan.courses.map((course) =>
@@ -202,7 +203,7 @@ const CreatePlan = ({
   };
 
   const checkGroup = (id: string, courseType: string, groupNumber: string) => {
-    void window.umami.track("Change group");
+    void window.umami?.track("Change group");
     setPlan({
       ...plan,
       groups: plan.groups.map((group) =>

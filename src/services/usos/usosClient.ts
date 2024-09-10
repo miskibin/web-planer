@@ -24,10 +24,10 @@ export const createClient = ({
     throw new Error("No token or secret provided");
   }
   return {
-    async get<R = unknown>(endpoint: string): Promise<R> {
+    async get<R = unknown>(endpoint: string, shouldCache = false): Promise<R> {
       const url = `${baseUrl}/${endpoint}`;
 
-      if (cache.has(url)) {
+      if (cache.has(url) && shouldCache) {
         return cache.get(url) as R;
       }
 
@@ -60,8 +60,10 @@ export const createClient = ({
 
       // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
       const json: object = await response.json();
-
-      cache.set(url, json);
+      
+      if (shouldCache) {
+        cache.set(url, json);
+      }
 
       return json as Promise<R>;
     },

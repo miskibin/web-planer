@@ -10,6 +10,7 @@ import { twMerge } from "tailwind-merge";
 import { Seo } from "@/components/SEO";
 import { Button, buttonVariants } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
+import { LoaderIcon } from "lucide-react";
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -183,7 +184,7 @@ const JoinUsBlock = ({
     </div>
     <div className="z-50">
       {isLoading ? (
-        <div className="text-white">Loading...</div>
+        <div className="text-white animate-spin"><LoaderIcon /></div>
       ) : canPlan ? (
         <Link
           href="/plans"
@@ -201,7 +202,7 @@ const JoinUsBlock = ({
         </Link>
       ) : (
         <Link
-          href="/login"
+          href="/api/login"
           data-umami-event="Landing - Go to planning"
           className={buttonVariants({
             size: "lg",
@@ -256,10 +257,10 @@ const Home = () => {
       const response = await fetch("/api/profile");
       return response.json();
     },
+    retry: false,
   });
   const isLoading = query.isLoading;
-  let canPlan = false;
-  canPlan = Boolean(query.data?.first_name);
+  const canPlan = Boolean(query.data?.first_name);
   return (
     <>
       <Seo />

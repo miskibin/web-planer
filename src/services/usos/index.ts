@@ -52,11 +52,13 @@ export const usosService = (usosClient: UsosClient) => {
     getProfile: async () => {
       return usosClient.get<GetProfile>(
         "users/user?fields=id|student_number|first_name|last_name|sex|student_status|staff_status|email|photo_urls|homepage_url",
+      false,
       );
     },
     getCoursesCarts: async () => {
       const data = await usosClient.get<GetCoursesCart>(
         "registrations/courses_cart",
+      false,
       );
 
       return data;
@@ -65,6 +67,7 @@ export const usosService = (usosClient: UsosClient) => {
     getUserRegistrations: async () => {
       const data = await usosClient.get<GetUserRegistrations>(
         "registrations/user_registrations?fields=id|description|message|type|status|is_linkage_required|www_instance|faculty|rounds|related_courses&active=false",
+        false,
       );
 
       return data;
